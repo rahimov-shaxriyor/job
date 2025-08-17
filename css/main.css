@@ -1,0 +1,108 @@
+/* header styles */
+header{
+    background-color: var(--primary);
+}
+header .container{
+    height: 156px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4.75rem;
+}
+.link{
+    font-size: 1.375rem;
+}
+.link:hover{
+    text-decoration: underline;
+}
+.theme-controller{
+    font-size: 1.5625rem;
+}
+
+/* main styles */
+.jobs-list{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.li-style{
+    box-shadow: 0px 15px 20px -5px rgba(13, 113, 130, 0.15);
+    padding: 2rem 2.5rem;
+    background-color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    position: relative;
+}
+.div-left{
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+.div-left-content{
+    display: flex;
+    flex-direction: column;
+    gap: .625rem;
+}
+.section1{
+    display: flex;
+    align-items: center;
+    gap: .9375rem;
+}
+.company-name{
+    font-weight: 700;
+    color: var(--primary)
+}
+.isNew{
+    font-weight: 700;
+    font-size: .875rem;
+    color: var(--white);
+    background-color: var(--primary);
+    padding: .4375rem .5rem .1875rem .5rem;
+    border-radius: .75rem;
+}
+.isFeatured{
+    font-weight: 700;
+    font-size: .875rem;
+    color: var(--white);
+    background-color: var(--black);
+    padding: .4375rem .5rem .1875rem .5rem;
+    border-radius: .75rem;
+}
+.title{
+    font-weight: 700;
+    font-size: 1.375rem;
+    color: var(--black);
+}
+.title:hover{
+    color: var(--primary);
+    cursor: pointer;
+}
+.div-right{
+    display: flex;
+    gap: 1rem;
+}
+.btn{
+    color: var(--primary);
+    background-color: var(--main-bg);
+    padding: .3125rem .625rem .1875rem .625rem;
+    letter-spacing: -0.0075rem;
+    border-radius: .25rem;
+    font-weight: 700;
+    font-size: 1rem;
+}
+.btn:hover{
+    background-color: var(--primary);
+    color: var(--white);
+}
+.green-span{
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: .3125rem;
+    background-color: var(--primary);
+    border-radius: .3125rem 0 0 .3125rem;
+}
+
+

@@ -1,0 +1,71 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* color variables */
+:root{
+    --primary: #5CA5A5;
+    --gray: #7C8F8F;
+    --white: #fff;
+    --black: #2B3939;
+    --main-bg: #EFFAFA;
+}
+
+/* fonts */
+@font-face {
+  font-display: swap; 
+  font-family: 'League Spartan';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/league-spartan-v14-latin-500.woff2') format('woff2'); 
+}
+
+@font-face {
+  font-display: swap; 
+  font-family: 'League Spartan';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/league-spartan-v14-latin-700.woff2') format('woff2'); 
+}
+
+/* global styles */
+html{
+    scroll-behavior: smooth;
+}
+body{
+    font-family: 'League Spartan';
+    font-weight: 500;
+    font-size: 1.125rem;
+    color: var(--gray);
+    background-color: var(--main-bg);
+    line-height: 1;
+    transition: all 0.4s;
+}
+button{
+    font-family: inherit;
+    font-weight: inherit;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+a{
+    text-decoration: none;
+    color: var(--white);
+}
+ul, ol{
+    list-style: none;
+}
+.container{
+    width: 100%;
+    max-width: 1142px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+.dark-mode{
+    --gray: #c1cece;
+    --white: #000;
+    --main-bg: #1c1b1b;
+    --black: #939393;
+}
