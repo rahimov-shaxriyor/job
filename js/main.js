@@ -1,33 +1,32 @@
 import { getData } from "./getData.js"
 
+// get elements from html
 const themeBtn = document.querySelector(".theme-controller")
-const moon = themeBtn.querySelector(".fa-moon")
-const sun = themeBtn.querySelector(".fa-sun")
 const jobsList = document.querySelector('.jobs-list')
 
-if (localStorage.getItem("theme") === "dark") {
-  document.body.classList.add("dark-mode")
-  moon.style.display = "none"
-  sun.style.display = "inline-block"
-} else {
-  moon.style.display = "inline-block"
-  sun.style.display = "none"
+// get theme from localstorage
+let theme = localStorage.getItem("theme") || ""
+if (theme) {
+  document.body.classList.add(theme)
+  themeBtn.children[0].classList.toggle("hidden")
+  themeBtn.children[1].classList.toggle("hidden")
 }
 
-themeBtn.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode")
-
-  if (document.body.classList.contains("dark-mode")) {
-    localStorage.setItem("theme", "dark")
-    moon.style.display = "none"
-    sun.style.display = "flex"
+// change mode
+themeBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode')
+  themeBtn.children[0].classList.toggle("hidden")
+  themeBtn.children[1].classList.toggle("hidden")
+  
+  if (document.body.classList.contains('dark-mode')) {
+    localStorage.setItem('theme', 'dark-mode')
   } else {
-    localStorage.setItem("theme", "light")
-    moon.style.display = "flex"
-    sun.style.display = "none"
+    localStorage.setItem('theme', '')
   }
+
 })
 
+// update UI
 const updateUI = (arr) => {
   jobsList.innerHTML = ''
   arr.forEach(worker => {

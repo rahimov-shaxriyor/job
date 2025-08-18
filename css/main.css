@@ -18,6 +18,9 @@ header .container{
 .theme-controller{
     font-size: 1.5625rem;
 }
+.hidden{
+    display: none !important;
+}
 
 /* main styles */
 .jobs-list{
