@@ -9,7 +9,7 @@ export async function getData() {
         let data = await res.json()
         return data
     } catch(err) {
-        console.log(err.message, + ' ' + err.status);
+        console.log(err.message + ' ' + err.status);
         
     }
 }

@@ -3,6 +3,7 @@ import { getData } from "./getData.js"
 // get elements from html
 const themeBtn = document.querySelector(".theme-controller")
 const jobsList = document.querySelector('.jobs-list')
+const filterDiv = document.querySelector('.filter')
 
 // get theme from localstorage
 let theme = localStorage.getItem("theme") || ""
@@ -25,6 +26,29 @@ themeBtn.addEventListener('click', () => {
   }
 
 })
+
+let skillsArr = []
+
+const getTime = (create_time) => {
+  const now = new Date()
+  const created = new Date(create_time)
+  const ms = now - created
+
+  const days = Math.floor(ms / (1000 * 60 * 60 * 24))
+  const weeks = Math.floor(days / 7)
+  const months = Math.floor(days / 30)
+
+  if (days === 0) {
+    return 'today'
+  } else if (days < 7) {
+    return days + 'd ago'
+  } else if (weeks < 4) {
+    return weeks + 'w ago'
+  } else {
+    return months + 'mo ago'
+  }
+
+}
 
 // update UI
 const updateUI = (arr) => {
@@ -74,7 +98,7 @@ const updateUI = (arr) => {
     section2.append(titleP)
     
     const section3content = document.createElement('p')
-    section3content.textContent = `${worker.create_time} • ${worker.work_time} • ${worker.work_place}`
+    section3content.textContent = `${getTime(worker.create_time)} • ${worker.work_time} • ${worker.work_place}`
     section3.append(section3content)
 
     div_left_content.append(section1, section2, section3)
@@ -89,6 +113,42 @@ const updateUI = (arr) => {
         btn.classList.add('btn')
         btn.textContent = skill
         div_right.append(btn)
+
+        // filter by skills
+        btn.addEventListener('click', async () => {
+          if (!skillsArr.includes(skill)) {
+            skillsArr.push(btn.textContent)
+
+            filterDiv.style.display = 'flex'
+            const skillBtn = document.createElement('button')
+            skillBtn.textContent = skillsArr.at(-1)
+            skillBtn.classList.add('skillBtn')
+
+
+            let clearBtn = document.querySelector('.clearBtn')
+            if (!clearBtn) {
+              clearBtn = document.createElement('button')
+              clearBtn.textContent = 'Clear'
+              clearBtn.classList.add('clearBtn')
+              
+              clearBtn.addEventListener('click', async () => {
+                filterDiv.style.display = 'none'
+                filterDiv.innerHTML = ''
+                skillsArr = []
+                let arr = await getData()
+                updateUI(arr.data)
+              })
+            }
+            
+            filterDiv.append(skillBtn, clearBtn)
+
+            const data = await getData()
+            const filteredArr = data.data.filter(worker => skillsArr.every(s => worker.skills.includes(s)))
+            updateUI(filteredArr)
+
+          }
+        })
+        
       })
     }
 
@@ -96,6 +156,7 @@ const updateUI = (arr) => {
     jobsList.append(li)
   })
 }
+
 let arr = await getData()
 updateUI(arr.data)
 
