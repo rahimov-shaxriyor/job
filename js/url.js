@@ -1,1 +1,1 @@
- export const url = "https://json-api.uz/api/project/jobs-list/jobs"
+ export const url = "https://json-api.uz/api/project/jobs-list/jobs/"
